@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnektAPI", "ConnektAPI\ConnektAPI.csproj", "{7DB0BEE3-060B-4A62-94EC-F51FD6D16318}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DB0BEE3-060B-4A62-94EC-F51FD6D16318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB0BEE3-060B-4A62-94EC-F51FD6D16318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB0BEE3-060B-4A62-94EC-F51FD6D16318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB0BEE3-060B-4A62-94EC-F51FD6D16318}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
