@@ -15,16 +15,18 @@ namespace ConnektAPI_Core.Repository.Auth;
 public class Auth : IAuth
 {
     private readonly ApplicationDbContext context;
-    private readonly UserManager<User> userManager;
+    private readonly UserManager<ApplicationUser> userManager;
+    private readonly SignInManager<ApplicationUser> signInManager;
 
-    public Auth(ApplicationDbContext context, UserManager<User> userManager)
+    public Auth(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
         this.context = context;
         this.userManager = userManager;
+        this.signInManager = signInManager;
     }
     public async Task<OperationResult<SignUpResponseModel>> SignUp(SignUpRequestModel signUpRequestModel)
     {
-        var user = new User
+        var user = new ApplicationUser
         {
             UserName = signUpRequestModel.Username,
             Email = signUpRequestModel.Email
@@ -36,8 +38,6 @@ public class Auth : IAuth
         // Check if the creation was successful
         if (result.Succeeded)
         {
-            // Generate JWT token if needed
-            var token = GenerateJwtToken(user);
 
             var response = new SignUpResponseModel
             {
@@ -47,6 +47,7 @@ public class Auth : IAuth
             return new OperationResult<SignUpResponseModel>()
             {
                 Result = response,
+                //IsSuccess = true,
             };
         }
         else
@@ -62,25 +63,25 @@ public class Auth : IAuth
     }
 
 // Method to generate the JWT token (simplified example)
-    private string GenerateJwtToken(User user)
-    {
-        // Your JWT token generation logic here
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("YourSecretKeyHere"); // Replace with your secret key
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            }),
-            Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
-
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
-    }
+    // private string GenerateJwtToken(ApplicationUser user)
+    // {
+    //     // Your JWT token generation logic here
+    //     var tokenHandler = new JwtSecurityTokenHandler();
+    //     var key = Encoding.ASCII.GetBytes("YourSecretKeyHere"); // Replace with your secret key
+    //     var tokenDescriptor = new SecurityTokenDescriptor
+    //     {
+    //         Subject = new ClaimsIdentity(new[]
+    //         {
+    //             new Claim(ClaimTypes.Name, user.UserName),
+    //             new Claim(ClaimTypes.NameIdentifier, user.Id)
+    //         }),
+    //         Expires = DateTime.UtcNow.AddDays(7),
+    //         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    //     };
+    //
+    //     var token = tokenHandler.CreateToken(tokenDescriptor);
+    //     return tokenHandler.WriteToken(token);
+    // }
 
 
     public Task<OperationResult<LoginResponseModel>> Login(LoginRequestModel loginRequestModel)

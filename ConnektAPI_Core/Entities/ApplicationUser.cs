@@ -2,18 +2,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ConnektAPI_Core.Entities;
 
-public class User : IdentityUser
+public class ApplicationUser : IdentityUser
 {
-    /// <summary>
-    /// The user first name
-    /// </summary>
-    public string FirstName { get; set; }
-    
-    /// <summary>
-    /// The user last name
-    /// </summary>
-    public string LastName { get; set; }
-    
     /// <summary>
     /// The user posts
     /// </summary>
@@ -29,7 +19,7 @@ public class User : IdentityUser
     /// </summary>
     public List<Like> Likes { get; set; }
     
-    public List<User> Followers { get; set; }
+    public List<ApplicationUser> Followers { get; set; }
     
-    public List<User> Following { get; set; }
+    public List<ApplicationUser> Following { get; set; }
 }
