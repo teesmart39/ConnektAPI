@@ -20,6 +20,6 @@ public class AuthService : IAuthService
 
     public Task<OperationResult<LoginResponseModel>> Login(LoginRequestModel loginRequestModel)
     {
-        throw new NotImplementedException();
+        return auth.Login(loginRequestModel);
     }
 }
