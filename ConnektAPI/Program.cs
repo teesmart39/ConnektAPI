@@ -1,14 +1,20 @@
 using ConnektAPI.Extensions;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddServices();
+builder.Services.AddAuthentication(builder.Configuration);
+builder.Services.AddDomainServices();
+
 builder.Services.AddIdentity();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+
 builder.Services.ConfigureDbContext(builder.Configuration);
 var app = builder.Build();
 
@@ -20,7 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

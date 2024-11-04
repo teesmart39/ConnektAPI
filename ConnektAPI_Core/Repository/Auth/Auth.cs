@@ -8,6 +8,7 @@ using ConnektAPI_Core.Data;
 using ConnektAPI_Core.Entities;
 using ConnektAPI_Core.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ConnektAPI_Core.Repository.Auth;
@@ -17,12 +18,13 @@ public class Auth : IAuth
     private readonly ApplicationDbContext context;
     private readonly UserManager<ApplicationUser> userManager;
     private readonly SignInManager<ApplicationUser> signInManager;
-
-    public Auth(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+    private readonly IConfiguration configuration;
+    public Auth(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
     {
         this.context = context;
         this.userManager = userManager;
         this.signInManager = signInManager;
+        this.configuration = configuration;
     }
     public async Task<OperationResult<SignUpResponseModel>> SignUp(SignUpRequestModel signUpRequestModel)
     {
@@ -84,8 +86,67 @@ public class Auth : IAuth
     // }
 
 
-    public Task<OperationResult<LoginResponseModel>> Login(LoginRequestModel loginRequestModel)
+    public async Task<OperationResult<LoginResponseModel>> Login(LoginRequestModel loginRequestModel)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var user = await userManager.FindByNameAsync(loginRequestModel.Username);
+            if (user == null)
+            {
+                return new OperationResult<LoginResponseModel>()
+                {
+                    ErrorTitle = "User Not Found",
+                    ErrorMessage = "Invalid username",
+
+                };
+
+            }
+
+            var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestModel.Password);
+
+            if (!checkPasswordResult)
+            {
+                return new OperationResult<LoginResponseModel>()
+                {
+                    ErrorTitle = "Incorrect Password",
+                    ErrorMessage = "Invalid username",
+
+                };
+            }
+
+            var signingCredential =
+                new SigningCredentials(
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SigningKey"])),
+                    SecurityAlgorithms.HmacSha256Signature);
+
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+            };
+
+            var jwtObject = new JwtSecurityToken(
+                issuer: configuration["JWT:Issuer"],
+                audience: configuration["JWT:Audience"],
+                claims: claims,
+                notBefore: null,
+                expires: DateTime.Now.AddHours(1),
+                signingCredentials: signingCredential
+            );
+
+            var jwtString = new JwtSecurityTokenHandler().WriteToken(jwtObject);
+
+            return new OperationResult<LoginResponseModel>()
+            {
+                Result = new LoginResponseModel() { Token = jwtString }
+            };
+
+        }
+        catch (Exception ex)
+        {
+            return new OperationResult<LoginResponseModel>(){
+                ErrorTitle = ex.Message,
+                ErrorMessage = ex.StackTrace,
+            };
+        }
     }
 }
