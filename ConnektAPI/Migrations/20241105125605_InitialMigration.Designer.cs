@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConnektAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241104155642_InitialMigration")]
+    [Migration("20241105125605_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace ConnektAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ApplicationUserApplicationUser", b =>
-                {
-                    b.Property<string>("FollowersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FollowingId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("FollowersId", "FollowingId");
-
-                    b.HasIndex("FollowingId");
-
-                    b.ToTable("ApplicationUserApplicationUser");
-                });
 
             modelBuilder.Entity("ConnektAPI_Core.Entities.ApplicationUser", b =>
                 {
@@ -177,6 +162,21 @@ namespace ConnektAPI.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("ConnektAPI_Core.Entities.UserFollower", b =>
+                {
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FollowingId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FollowerId", "FollowingId");
+
+                    b.HasIndex("FollowingId");
+
+                    b.ToTable("UserFollowers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -310,21 +310,6 @@ namespace ConnektAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ApplicationUserApplicationUser", b =>
-                {
-                    b.HasOne("ConnektAPI_Core.Entities.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("FollowersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ConnektAPI_Core.Entities.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("FollowingId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ConnektAPI_Core.Entities.Like", b =>
                 {
                     b.HasOne("ConnektAPI_Core.Entities.ApplicationUser", null)
@@ -348,6 +333,25 @@ namespace ConnektAPI.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ConnektAPI_Core.Entities.UserFollower", b =>
+                {
+                    b.HasOne("ConnektAPI_Core.Entities.ApplicationUser", "Follower")
+                        .WithMany("Following")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnektAPI_Core.Entities.ApplicationUser", "Following")
+                        .WithMany("Followers")
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.Navigation("Follower");
+
+                    b.Navigation("Following");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -403,6 +407,10 @@ namespace ConnektAPI.Migrations
 
             modelBuilder.Entity("ConnektAPI_Core.Entities.ApplicationUser", b =>
                 {
+                    b.Navigation("Followers");
+
+                    b.Navigation("Following");
+
                     b.Navigation("Likes");
 
                     b.Navigation("Photos");

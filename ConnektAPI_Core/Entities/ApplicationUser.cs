@@ -19,7 +19,7 @@ public class ApplicationUser : IdentityUser
     /// </summary>
     public List<Like> Likes { get; set; }
     
-    public List<ApplicationUser> Followers { get; set; }
+    public List<UserFollower> Followers { get; set; }
     
-    public List<ApplicationUser> Following { get; set; }
+    public List<UserFollower> Following { get; set; }
 }
