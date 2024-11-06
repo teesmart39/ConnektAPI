@@ -8,7 +8,6 @@ namespace ConnektAPI.Controllers;
 
 public class AuthController : Controller
 {
-    
     private readonly IAuthService authService;
 
     public AuthController(IAuthService authService)
@@ -21,22 +20,16 @@ public class AuthController : Controller
     {
         var operation = await authService.SignUp(signUpRequestModel);
 
-        if (!operation.IsSuccess)
-        {
-            return BadRequest(operation);
-        }
+        if (!operation.IsSuccess) return BadRequest(operation);
         return Ok(operation);
     }
-    
+
     [HttpPost(EndpointRoutes.Login)]
     public async Task<ActionResult> Login([FromBody] LoginRequestModel loginRequestModel)
     {
         var operation = await authService.Login(loginRequestModel);
 
-        if (!operation.IsSuccess)
-        {
-            return BadRequest(operation);
-        }
+        if (!operation.IsSuccess) return BadRequest(operation);
         return Ok(operation);
     }
 }

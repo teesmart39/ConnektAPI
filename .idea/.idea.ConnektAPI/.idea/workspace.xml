@@ -11,15 +11,31 @@
   <component name="ChangeListManager">
     <list default="true" id="a83c3d68-ace5-4f96-91d9-69900d10b253" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConnektAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConnektAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/ConnektAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/ConnektAPI.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/TestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/TestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI/Extensions/ApplicationExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Extensions/ApplicationExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/20241105125605_InitialMigration.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/20241105125605_InitialMigration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginRequestModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginRequestModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginResponseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginResponseModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Register/SignUpRequestModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Register/SignUpRequestModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/User/UserProfileApiModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/User/UserProfileApiModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ConnektAPI_Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ConnektAPI_Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/ApplicationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/ApplicationUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/BaseClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/BaseClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Like.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Like.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Photo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Photo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/UserFollower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/UserFollower.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Repository/Auth/Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Repository/Auth/Auth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Routes/EndpointRoutes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Routes/EndpointRoutes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Services/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Services/Auth/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Services/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Services/Auth/IAuthService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +46,6 @@
     <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -50,9 +61,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24372012c6c94138bf3f496e104366ffc8f918/17/060aa4a3/AsyncValueTaskMethodBuilder`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/368b103967cf41e88c4ab2f200944e6314020/af/370f4487/JwtSecurityTokenHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a87841e061224146a9492e068b7071f21de910/0b/b436e232/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConnektAPI/WeatherForecast.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConnektAPI_Core/Class1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -69,16 +77,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.ConnektAPI: https.executor": "Run",
+    ".NET Launch Settings Profile.ConnektAPI: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.ConnektAPI: https.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "temitope/test",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ConnektAPI: https">
@@ -137,13 +140,12 @@
       <option name="presentableId" value="Default" />
       <updated>1730379276249</updated>
       <workItem from="1730379277545" duration="2520000" />
-      <workItem from="1730729209949" duration="5136000" />
-      <workItem from="1730749044226" duration="10852000" />
+      <workItem from="1730729209949" duration="5309000" />
+      <workItem from="1730795361086" duration="868000" />
+      <workItem from="1730800531420" duration="12141000" />
+      <workItem from="1730881790936" duration="7726000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,82 +166,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs</url>
-          <line>20</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Controllers\AuthController.cs" containingFunctionPresentation="Method 'SignUp'">
+          <url>file://$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs</url>
+          <line>27</line>
+          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Controllers\UserController.cs" containingFunctionPresentation="Method 'GetUsers'">
             <startOffsets>
-              <option value="557" />
+              <option value="806" />
             </startOffsets>
             <endOffsets>
-              <option value="558" />
+              <option value="832" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs</url>
-          <line>32</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Controllers\AuthController.cs" containingFunctionPresentation="Method 'Login'">
+          <url>file://$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Controllers\UserController.cs" containingFunctionPresentation="Method 'GetUsers'">
             <startOffsets>
-              <option value="898" />
+              <option value="657" />
             </startOffsets>
             <endOffsets>
-              <option value="899" />
+              <option value="658" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI_Core/Repository/Auth/Auth.cs</url>
-          <line>135</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI_Core\Repository\Auth\Auth.cs" containingFunctionPresentation="Method 'Login'">
-            <startOffsets>
-              <option value="4737" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4805" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI/Controllers/TestController.cs</url>
-          <line>12</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Controllers\TestController.cs" containingFunctionPresentation="Method 'Test'">
-            <startOffsets>
-              <option value="294" />
-            </startOffsets>
-            <endOffsets>
-              <option value="295" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI/Extensions/ApplicationExtensions.cs</url>
-          <line>39</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Extensions\ApplicationExtensions.cs" containingFunctionPresentation="Method 'AddAuthentication'">
-            <startOffsets>
-              <option value="1541" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1542" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConnektAPI/Program.cs</url>
-          <line>28</line>
-          <properties documentPath="C:\dev\connekt\ConnektAPI\ConnektAPI\Program.cs" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="725" />
-            </startOffsets>
-            <endOffsets>
-              <option value="749" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
