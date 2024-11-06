@@ -15,17 +15,20 @@ namespace ConnektAPI_Core.Repository.Auth;
 
 public class Auth : IAuth
 {
-    private readonly ApplicationDbContext context;
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly SignInManager<ApplicationUser> signInManager;
     private readonly IConfiguration configuration;
-    public Auth(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+    private readonly ApplicationDbContext context;
+    private readonly SignInManager<ApplicationUser> signInManager;
+    private readonly UserManager<ApplicationUser> userManager;
+
+    public Auth(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
     {
         this.context = context;
         this.userManager = userManager;
         this.signInManager = signInManager;
         this.configuration = configuration;
     }
+
     public async Task<OperationResult<SignUpResponseModel>> SignUp(SignUpRequestModel signUpRequestModel)
     {
         var user = new ApplicationUser
@@ -40,28 +43,25 @@ public class Auth : IAuth
         // Check if the creation was successful
         if (result.Succeeded)
         {
-
             var response = new SignUpResponseModel
             {
                 UserId = user.Id
             };
 
-            return new OperationResult<SignUpResponseModel>()
+            return new OperationResult<SignUpResponseModel>
             {
-                Result = response,
+                Result = response
                 //IsSuccess = true,
             };
         }
-        else
+
+        // Return an error result if creation failed
+        return new OperationResult<SignUpResponseModel>
         {
-            // Return an error result if creation failed
-            return new OperationResult<SignUpResponseModel>()
-            {
-                ErrorTitle = "Sign Up Failed",
-                ErrorMessage = "Failed to sign up",
-                StatusCode = (int)HttpStatusCode.BadRequest
-            };
-        }
+            ErrorTitle = "Sign Up Failed",
+            ErrorMessage = "Failed to sign up",
+            StatusCode = (int)HttpStatusCode.BadRequest
+        };
     }
 
 // Method to generate the JWT token (simplified example)
@@ -92,60 +92,55 @@ public class Auth : IAuth
         {
             var user = await userManager.FindByNameAsync(loginRequestModel.Username);
             if (user == null)
-            {
-                return new OperationResult<LoginResponseModel>()
+                return new OperationResult<LoginResponseModel>
                 {
                     ErrorTitle = "User Not Found",
-                    ErrorMessage = "Invalid username",
-
+                    ErrorMessage = "Invalid username"
                 };
-
-            }
 
             var checkPasswordResult = await userManager.CheckPasswordAsync(user, loginRequestModel.Password);
 
             if (!checkPasswordResult)
-            {
-                return new OperationResult<LoginResponseModel>()
+                return new OperationResult<LoginResponseModel>
                 {
                     ErrorTitle = "Incorrect Password",
-                    ErrorMessage = "Invalid username",
-
+                    ErrorMessage = "Invalid username"
                 };
-            }
 
             var signingCredential =
                 new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SigningKey"])),
                     SecurityAlgorithms.HmacSha256Signature);
 
-            var claims = new List<Claim>()
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
+                new(ClaimTypes.Name, user.UserName),
+                new(ClaimTypes.Email, user.Email),
+                new(ClaimTypes.NameIdentifier, user.Id)
             };
 
             var jwtObject = new JwtSecurityToken(
-                issuer: configuration["JWT:Issuer"],
-                audience: configuration["JWT:Audience"],
-                claims: claims,
-                notBefore: null,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: signingCredential
+                configuration["JWT:Issuer"],
+                configuration["JWT:Audience"],
+                claims,
+                null,
+                DateTime.Now.AddHours(1),
+                signingCredential
             );
 
             var jwtString = new JwtSecurityTokenHandler().WriteToken(jwtObject);
 
-            return new OperationResult<LoginResponseModel>()
+            return new OperationResult<LoginResponseModel>
             {
-                Result = new LoginResponseModel() { Token = jwtString }
+                Result = new LoginResponseModel { Token = jwtString }
             };
-
         }
         catch (Exception ex)
         {
-            return new OperationResult<LoginResponseModel>(){
+            return new OperationResult<LoginResponseModel>
+            {
                 ErrorTitle = ex.Message,
-                ErrorMessage = ex.StackTrace,
+                ErrorMessage = ex.StackTrace
             };
         }
     }

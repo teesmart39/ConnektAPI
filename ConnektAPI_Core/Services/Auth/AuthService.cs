@@ -13,6 +13,7 @@ public class AuthService : IAuthService
     {
         this.auth = auth;
     }
+
     public Task<OperationResult<SignUpResponseModel>> SignUp(SignUpRequestModel signUpRequestModel)
     {
         return auth.SignUp(signUpRequestModel);
