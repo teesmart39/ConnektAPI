@@ -29,10 +29,24 @@ public class UserController : Controller
             return Problem(fetchCustomer?.ErrorMessage, statusCode: (int)HttpStatusCode.NotFound,
                 title: fetchCustomer?.ErrorTitle);
 
-        var operation = userService.GetUsers();
-        if (!operation.Result.IsSuccess)
-            return Problem(operation?.Result.ErrorMessage, statusCode: operation?.Result.StatusCode,
-                title: operation?.Result.ErrorTitle);
+        var operation = await userService.GetUsers();
+        if (!operation.IsSuccess)
+            return Problem(operation?.ErrorMessage, statusCode: operation?.StatusCode,
+                title: operation?.ErrorTitle);
+
+        return Ok(operation?.Result);
+    }
+    
+    [HttpGet(EndpointRoutes.GetUser)]
+    public async Task<ActionResult> GetUser()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        
+        var operation = await userService.GetUserById(userId);
+        if (!operation.IsSuccess)
+            return Problem(operation?.ErrorMessage, statusCode: operation?.StatusCode,
+                title: operation?.ErrorTitle);
 
         return Ok(operation?.Result);
     }

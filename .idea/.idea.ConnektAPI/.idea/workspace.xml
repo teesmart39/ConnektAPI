@@ -9,33 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a83c3d68-ace5-4f96-91d9-69900d10b253" name="Changes" comment="">
+    <list default="true" id="a83c3d68-ace5-4f96-91d9-69900d10b253" name="Changes" comment="feat: Added Get Users and Get user profile by Id">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConnektAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConnektAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/ConnektAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/ConnektAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/TestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/TestController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Extensions/ApplicationExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Extensions/ApplicationExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/20241105125605_InitialMigration.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/20241105125605_InitialMigration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginRequestModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Login/LoginRequestModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Register/SignUpRequestModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/Auth/Register/SignUpRequestModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/User/UserProfileApiModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ApiModels/User/UserProfileApiModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/ConnektAPI_Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/ConnektAPI_Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/ApplicationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/ApplicationUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/BaseClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/BaseClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Like.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Like.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Photo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Photo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/Post.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Entities/UserFollower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Entities/UserFollower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Repository/Auth/Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Repository/Auth/Auth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Routes/EndpointRoutes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Routes/EndpointRoutes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Services/Auth/AuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnektAPI_Core/Services/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConnektAPI_Core/Services/Auth/IAuthService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +38,12 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64453bbe609a4e788912c4dfa02029831de908/15/d5006798/ActionMethodExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/dev/connekt/ConnektAPI/ConnektAPI/Controllers/UserController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConnektAPI/WeatherForecast.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConnektAPI_Core/Class1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -143,10 +123,20 @@
       <workItem from="1730729209949" duration="5309000" />
       <workItem from="1730795361086" duration="868000" />
       <workItem from="1730800531420" duration="12141000" />
-      <workItem from="1730881790936" duration="7726000" />
+      <workItem from="1730881790936" duration="15365000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: Added Get Users and Get user profile by Id">
+      <option name="closed" value="true" />
+      <created>1730890178259</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730890178259</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -161,6 +151,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="feat: Added Get Users and Get user profile by Id" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Added Get Users and Get user profile by Id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
