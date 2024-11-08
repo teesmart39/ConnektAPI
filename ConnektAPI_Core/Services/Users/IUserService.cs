@@ -7,4 +7,6 @@ public interface IUserService
 {
     public Task<OperationResult<List<UserProfileApiModel>>> GetUsers();
     public Task<OperationResult<UserProfileApiModel>> GetUserById(string id);
+    
+    public Task<OperationResult> UpdateUser(UpdateUserProfileApiModel credentials, string id);
 }

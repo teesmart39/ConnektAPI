@@ -7,4 +7,6 @@ public interface IUserRepo
 {
     public Task<OperationResult<List<UserProfileApiModel>>> GetUsers();
     public Task<OperationResult<UserProfileApiModel>> GetUserById(string id);
+    
+    public Task<OperationResult> UpdateUserProfile(UpdateUserProfileApiModel credentials, string id);
 }

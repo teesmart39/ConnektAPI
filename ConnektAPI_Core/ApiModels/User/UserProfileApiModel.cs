@@ -50,5 +50,5 @@ public class UpdateUserProfileApiModel
     
     public string DateOfBirth { get; set; }
     
-    public string PhotoUrl { get; set; }
+   // public string PhotoUrl { get; set; }
 }

@@ -110,4 +110,45 @@ public class UserRepo : IUserRepo
             };
         }
     }
+
+    public async Task<OperationResult> UpdateUserProfile(UpdateUserProfileApiModel credentials, string id)
+    {
+        try
+        {
+            var user  = await userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return new OperationResult
+                {
+                    StatusCode = (int)HttpStatusCode.NotFound,
+                    ErrorTitle = "NOT FOUND",
+                    ErrorMessage = "The specified user does not exist."
+                };
+            }
+            user.FirstName = credentials.FirstName ?? user.FirstName;
+            user.LastName = credentials.LastName ?? user.LastName;
+            user.Nationality = credentials.Nationality;
+            user.Email = credentials.Email ?? user.Email;
+            user.PhoneNumber = credentials.PhoneNumber ?? user.PhoneNumber;
+            user.DateOfBirth = credentials.DateOfBirth ?? user.DateOfBirth;
+            
+           await  userManager.UpdateAsync(user);
+
+           return new OperationResult
+           {
+               StatusCode = (int)HttpStatusCode.OK,
+
+           };
+        }
+        catch (Exception e)
+        {
+            return new OperationResult
+            {
+                StatusCode = (int)HttpStatusCode.InternalServerError,
+                ErrorTitle = "SYSTEM ERROR",
+                ErrorMessage = e.Message
+            };
+        }
+    }
 }
