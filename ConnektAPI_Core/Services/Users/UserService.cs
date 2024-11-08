@@ -23,4 +23,9 @@ public class UserService : IUserService
     {
         return userRepo.GetUserById(id);
     }
+
+    public Task<OperationResult> UpdateUser(UpdateUserProfileApiModel credentials, string id)
+    {
+        return userRepo.UpdateUserProfile(credentials,id);
+    }
 }
